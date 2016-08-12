@@ -13,11 +13,25 @@ import java.io.OutputStream;
 import okhttp3.ResponseBody;
 
 public class ImageResponse extends Response {
-
+/*
+* Bench data
+* Default:
+* 3902727812ns (3.902s)
+* 4137196458ns (4.137s)
+* 4719141822ns (4.719s)
+*
+* 4KB buffer
+* 1620833ns (1.6ms)
+* 9117292ns (9.1ms)
+* 389427ns  (0.3ms)
+* 1389948ns (1.4ms)
+*/
     private final static String TAG = ImageResponse.class.getSimpleName();
 
     @Override
     public boolean save(Context context, ResponseBody body, String url) {
+        Log.e(TAG, url);
+        // XXX try in try?
         try {
             InputStream in = null;
             FileOutputStream out = null;
@@ -31,6 +45,7 @@ public class ImageResponse extends Response {
                 while ((c = in.read()) != -1) {
                     out.write(c);
                 }
+//                copy(in, out);
                 long end = System.nanoTime();
                 Log.e(TAG, "Saved image in " + (end - start));
 

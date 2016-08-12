@@ -57,6 +57,14 @@ public class LimitedTimeDiskCache {
         return new File(cacheDir, File.separator+fileNameGenerator.generate(url)).getAbsolutePath();
     }
 
+    /*
+    * Benchmark data
+    * 1578334ns (1.6ms)
+    * 1134531ns (1.1ms)
+    * 445572ns  (0.4ms)
+    * 100+files
+    * 45093282ns(45ms)
+    */
     private void readLoadingDates() {
         long start = System.nanoTime();
         File[] cachedFiles = cacheDir.listFiles();
@@ -120,7 +128,6 @@ public class LimitedTimeDiskCache {
             return BitmapFactory.decodeFile(file.getAbsolutePath());
         }
     }
-
 
     public void clear() {
         synchronized (this) {
