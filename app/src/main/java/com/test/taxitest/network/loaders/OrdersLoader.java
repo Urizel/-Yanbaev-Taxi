@@ -10,7 +10,6 @@ import com.test.taxitest.network.NetworkService;
 import com.test.taxitest.network.response.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -37,6 +36,7 @@ public class OrdersLoader extends AsyncTaskLoader<Response> {
         }
     }
 
+    // XXX protected
     protected Response apiCall() throws IOException {
         NetworkService service = NetworkFactory.getNetworkService();
         Call<List<Order>> call = service.orders();

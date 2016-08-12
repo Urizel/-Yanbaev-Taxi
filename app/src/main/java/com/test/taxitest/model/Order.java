@@ -85,7 +85,7 @@ public class Order implements Parcelable {
 
     @Override
     public String toString() {
-        return  TextUtils.join(" ", new Object[] {Order.class.getSimpleName(), NetworkFactory.GSON.toJson(this)});
+        return TextUtils.join(" ", new Object[] {Order.class.getSimpleName(), NetworkFactory.GSON.toJson(this)});
     }
 
 

@@ -19,6 +19,8 @@ public class Price implements Parcelable {
     @SerializedName("currency")
     protected String mCurrency;
 
+    // XXX naming
+    // XXX View logic in model
     private transient String _StringFormat = null;
 
     public Price(long amount, String currency) {
@@ -59,7 +61,7 @@ public class Price implements Parcelable {
 
     @Override
     public String toString() {
-        return  TextUtils.join(" ", new Object[] {Price.class.getSimpleName(), new Gson().toJson(this)});
+        return TextUtils.join(" ", new Object[] {Price.class.getSimpleName(), new Gson().toJson(this)});
     }
 
     @Override

@@ -1,21 +1,16 @@
 package com.test.taxitest.ui.fragment;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import com.test.taxitest.R;
 import com.test.taxitest.databinding.OrderDetailBinding;
@@ -68,7 +63,7 @@ public class OrderDetailFragment extends Fragment implements LoaderManager.Loade
         }
     }
 
-
+    // XXX Purpose?
     @Override
     public void onClick(View view) {
         if (mOrder == null || mOrder.getVehicle() == null)
@@ -98,6 +93,7 @@ public class OrderDetailFragment extends Fragment implements LoaderManager.Loade
         return binding.getRoot();
     }
 
+    // XXX Protected?
     protected void showImage(Bitmap bitmap) {
         binding.imageView.setImageBitmap(bitmap);
     }

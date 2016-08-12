@@ -15,6 +15,7 @@ public class AppController extends Application {
     @Override
     public void onLowMemory() {
         super.onLowMemory();
+        // XXX Cleaning files when low on RAM?
         LimitedTimeDiskCache.getInstance(getApplicationContext()).clear();
     }
 }

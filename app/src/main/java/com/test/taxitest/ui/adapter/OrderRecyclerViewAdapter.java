@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.test.taxitest.databinding.OrderListContentBinding;
 import com.test.taxitest.model.Order;
 
@@ -23,6 +24,7 @@ public class OrderRecyclerViewAdapter extends RecyclerView.Adapter<OrderRecycler
 
     public OrderRecyclerViewAdapter(@NonNull List<Order> orders) {
         setHasStableIds(true);
+        // XXX No defensive copy - incapsulation violation
         mOrders = orders;
     }
 

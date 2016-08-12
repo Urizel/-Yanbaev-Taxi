@@ -3,6 +3,7 @@ package com.test.taxitest.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
@@ -10,17 +11,15 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.support.design.widget.Snackbar;
-
 
 import com.test.taxitest.R;
-import com.test.taxitest.ui.fragment.OrderDetailFragment;
-import com.test.taxitest.ui.adapter.OrderRecyclerViewAdapter;
-import com.test.taxitest.network.loaders.OrdersLoader;
 import com.test.taxitest.model.Order;
+import com.test.taxitest.network.loaders.OrdersLoader;
 import com.test.taxitest.network.response.Response;
+import com.test.taxitest.ui.adapter.OrderRecyclerViewAdapter;
 import com.test.taxitest.ui.decorations.DividerItemDecoration;
 import com.test.taxitest.ui.decorations.EndOffsetItemDecoration;
+import com.test.taxitest.ui.fragment.OrderDetailFragment;
 import com.test.taxitest.ui.listener.RecyclerOrderClickListener;
 
 import java.util.ArrayList;
@@ -80,6 +79,7 @@ public class OrderListActivity
 
 
     public void setRefreshing(boolean refreshing) {
+        // XXX code style
         if (mSwipeRefreshLayout != null) mSwipeRefreshLayout.setRefreshing(refreshing);
     }
 
@@ -100,6 +100,7 @@ public class OrderListActivity
     private void setupRecyclerView(RecyclerView recyclerView, @Nullable List<Order> orders) {
         recyclerView.addOnItemTouchListener(new RecyclerOrderClickListener(this, this));
         if (orders == null) {
+            // XXX could use emptyList()
             orders = new ArrayList<>();
         }
         adapter = new OrderRecyclerViewAdapter(orders);

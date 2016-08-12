@@ -28,9 +28,11 @@ public class LimitedTimeDiskCache {
     public static LimitedTimeDiskCache getInstance(Context context) {
         LimitedTimeDiskCache diskCache = instance;
         if (diskCache == null) {
+            // XXX double cache creation
             synchronized (LimitedTimeDiskCache.class) {
                 diskCache = instance;
                 if (diskCache == null) {
+                    // XXX using inner cache
                     instance = new LimitedTimeDiskCache(new File(context.getCacheDir(), IMAGES_FOLDER), new Md5FileNameGenerator());
                 }
             }
@@ -41,6 +43,7 @@ public class LimitedTimeDiskCache {
     protected LimitedTimeDiskCache(File cacheDir, FileNameGenerator fileNameGenerator) {
         this.cacheDir = cacheDir;
         this.fileNameGenerator = fileNameGenerator;
+        // XXX IO on main thread
         if (!cacheDir.exists()) {
             if (!cacheDir.mkdirs()) {
                 Log.d(TAG, "Unable to create cache dir "+cacheDir.getAbsolutePath());
@@ -55,11 +58,13 @@ public class LimitedTimeDiskCache {
     }
 
     private void readLoadingDates() {
+        long start = System.nanoTime();
         File[] cachedFiles = cacheDir.listFiles();
         for (File cachedFile : cachedFiles) {
             if (cachedFile.isFile()) {
                 String absolutePath = cachedFile.getAbsolutePath();
                 String nameOfFile = absolutePath.substring(absolutePath.lastIndexOf(File.separator) + 1, absolutePath.length());
+                // XXX using last modified https://code.google.com/p/android/issues/detail?id=1699
                 if (System.currentTimeMillis() - cachedFile.lastModified() > TIMEOUT) {
                     if (!cachedFile.delete()) {
                         Log.d(TAG, "Unable to delete file "+cachedFile.getAbsolutePath());
@@ -69,8 +74,12 @@ public class LimitedTimeDiskCache {
                 }
             }
         }
+        long end = System.nanoTime();
+
+        Log.e(TAG, "loading done in " + (end - start));
     }
 
+    // XXX PUT?!
     public Bitmap put(String url) throws FileNotFoundException {
         synchronized (this) {
             String nameOfFile = fileNameGenerator.generate(url);
