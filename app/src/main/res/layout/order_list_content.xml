@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto" >
+    <data>
+        <variable
+            name="order"
+            type="com.test.taxitest.model.Order" />
+        <variable
+            name="dateFormat"
+            type="java.text.SimpleDateFormat" />
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="4dp"
+        card_view:contentPadding="6dp"
+        card_view:cardElevation="2dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/start_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:layout_marginTop="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:text="@{order.startAddress.address}"
+                tools:text="From Address" />
+
+            <TextView
+                android:id="@+id/end_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin_small"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/start_address"
+                android:textAppearance="?attr/textAppearanceListItem"
+                android:text="@{order.endAddress.address}"
+                tools:text="To Address"/>
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin"
+                android:layout_marginStart="@dimen/text_margin"
+                android:layout_marginRight="@dimen/text_margin_small"
+                android:layout_marginEnd="@dimen/text_margin_small"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/cost"
+                android:layout_toStartOf="@+id/cost"
+                android:layout_below="@+id/end_address"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:text="@{order.orderTime != null ? dateFormat.format(order.orderTime) : null}"
+                tools:text="Date"/>
+            <TextView
+                android:id="@+id/cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_margin_small"
+                android:layout_marginStart="@dimen/text_margin_small"
+                android:layout_marginRight="@dimen/text_margin"
+                android:layout_marginEnd="@dimen/text_margin"
+                android:layout_marginBottom="@dimen/text_margin"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/end_address"
+                android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                android:text="@{order.price.stringFormat}"
+                tools:text="Price"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+</layout>

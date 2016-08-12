@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Taxi Test</string>
+    <string name="title_order_list">Active Orders</string>
+    <string name="title_order_detail">Order Detail</string>
+    <string name="title_order_detail_args">Order %1$d</string>
+
+    <string name="error_orders_loading">Ups. Error</string>
+
+    <string name="image_description">User Image</string>
+
+    <string name="title_from">From</string>
+    <string name="title_to">To</string>
+    <string name="title_price">Price</string>
+    <string name="title_time">Time</string>
+    <string name="title_vehicle">Vehicle</string>
+    <string name="title_driver">Driver</string>
+    <string name="title_model">Model</string>
+    <string name="title_reg_number">Reg. number</string>
+</resources>

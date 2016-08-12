@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" >
+    <data>
+        <variable
+            name="order"
+            type="com.test.taxitest.model.Order" />
+        <import type="android.view.View" alias="view"/>
+        <variable
+            name="dateFormat"
+            type="java.text.SimpleDateFormat" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:divider="@drawable/divider_transparent"
+        android:showDividers="middle"
+        android:padding="@dimen/text_margin_small"
+        tools:context=".ui.fragment.OrderDetailFragment">
+
+
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/image_description"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleOrderTextView"
+            android:visibility="@{order.startAddress != null ? view.VISIBLE : view.GONE}"
+            android:text="@string/title_from"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.startAddress != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.startAddress != null ? order.startAddress.city + ' ' + order.startAddress.address : null}"
+            tools:text="From Address" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleOrderTextView"
+            android:visibility="@{order.endAddress != null ? view.VISIBLE : view.GONE}"
+            android:text="@string/title_to"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.endAddress != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.endAddress != null ? order.endAddress.city + ' ' + order.endAddress.address : null}"
+            tools:text="To Address" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleOrderTextView"
+            android:visibility="@{order.vehicle != null ? view.VISIBLE : view.GONE}"
+            android:text="@string/title_vehicle"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.vehicle != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.vehicle.modelName + ' ' + order.vehicle.regNumber}"
+            tools:text="ModelName_RegNumber"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.vehicle != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.vehicle.driverName}"
+            tools:text="DriverName"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleOrderTextView"
+            android:visibility="@{order.orderTime != null ? view.VISIBLE : view.GONE}"
+            android:text="@string/title_time"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.orderTime != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.orderTime != null ? dateFormat.format(order.orderTime) : null}"
+            tools:text="OrderTime"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TitleOrderTextView"
+            android:visibility="@{order.price != null ? view.VISIBLE : view.GONE}"
+            android:text="@string/title_price"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/ValueOrderTextView"
+            android:visibility="@{order.price != null ? view.VISIBLE : view.GONE}"
+            android:text="@{order.price.stringFormat}"
+            tools:text="Price"/>
+
+    </LinearLayout>
+
+</layout>

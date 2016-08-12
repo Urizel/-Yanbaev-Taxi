@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ValueOrderTextView" parent="TextAppearance.AppCompat.Light.SearchResult.Subtitle">
+        <item name="android:layout_marginEnd">@dimen/text_margin_small</item>
+        <item name="android:layout_marginStart">@dimen/text_margin_small</item>
+    </style>
+</resources>
